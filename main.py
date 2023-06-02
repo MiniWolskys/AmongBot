@@ -47,13 +47,10 @@ async def sendMessage(user: discord.User, selected: discord.User):
     if user.id == selected.id:
         await bot.get_user(user.id).send('Tu es le charmeur de fantôme ! Tue ton équipe !')
     else:
-        await bot.get_user(user.id).send('Tu es un enquêteur ! Trouve le fantôme et accomplis les quetes !')
+        await bot.get_user(user.id).send('Tu es un enquêteur ! Trouve le fantôme et accomplis les quêtes !')
 
 
-async def checkUsers(
-        ctx: commands.Context,
-        users: list[discord.User],
-) -> bool:
+async def checkUsers(ctx: commands.Context, users: list[discord.User]) -> bool:
     for user in users:
         if not checkUserExistsAndIsInGuild(ctx, user):
             return await sendInvalidUserMessage(ctx, user)
@@ -65,8 +62,8 @@ def checkUserExistsAndIsInGuild(ctx: commands.Context, user: discord.User) -> bo
 
 async def sendInvalidUserMessage(ctx, user):
     await ctx.send(f"L'utilisateur {user} n'est pas valide ou pas présent sur le serveur."
-                   f"Assurez vous que les utilisateurs sont valides en les mentionnant,"
-                   f"et qu'ils sont présent sur le serveur.")
+                   f"Assurez-vous que les utilisateurs sont valides en les mentionnant,"
+                   f"et qu'ils soient présents sur le serveur.")
     return False
 
 
